@@ -49,14 +49,14 @@ u8 SSD_u8SetNumber(u8 Copy_u8Number,SSD_T * Copy_pSSD_T){
     if (Copy_pSSD_T != NULL){
         u8 SSD_mappedValue;
         Local_u8ErrorState = DIO_u8SetPortDirection(Copy_pSSD_T->port, DIO_u8PORT_OUTPUT);
-        Local_u8ErrorState = DIO_u8SetPinDirection(Copy_pSSD_T->enablePort, Copy_pSSD_T->enablePin, DIO_u8PIN_OUTPUT); //for enable pin
+        Local_u8ErrorState = DIO_u8SetPinDirection(Copy_pSSD_T->enablePort,Copy_pSSD_T->enablePin,DIO_u8PIN_OUTPUT); //for enable pin
         
         if(Copy_pSSD_T->commonType == SSD_COMMON_CATHODE){
-            Local_u8ErrorState = DIO_u8SetPinValue(Copy_pSSD_T->enablePort, Copy_pSSD_T->enablePin, DIO_u8PIN_HIGH);
+            Local_u8ErrorState = DIO_u8SetPinValue(Copy_pSSD_T->enablePort,Copy_pSSD_T->enablePin,DIO_u8PIN_LOW);
         }
 
         else if(Copy_pSSD_T->commonType == SSD_COMMON_ANODE){
-            Local_u8ErrorState = DIO_u8SetPinValue(Copy_pSSD_T->enablePort, Copy_pSSD_T->enablePin, DIO_u8PIN_LOW);
+            Local_u8ErrorState = DIO_u8SetPinValue(Copy_pSSD_T->enablePort, Copy_pSSD_T->enablePin, DIO_u8PIN_HIGH);
         }
         else{
             Local_u8ErrorState = ERROR_WRONG_FUNCTION_ARGUMENTS;
