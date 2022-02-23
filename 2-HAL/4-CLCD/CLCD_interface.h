@@ -15,7 +15,12 @@ void CLCD_voidSendData(u8 Copy_u8Data);
 
 void CLCD_voidInit(void);
 
+void CLCD_voidSendString(const char * Copy_pcString);
 
 
+void CLCD_voidGoToXY(u8 Copy_u8XPosition, u8 Copy_u8YPosition);
+
+void CLCD_voidWriteSpecialCharacter(u8 * Copy_pu8SpecialCharacterArray, u8 Copy_u8BlockNumber,
+                                    u8 Copy_u8XPosition, u8 Copy_u8YPosition);
 
 #endif
