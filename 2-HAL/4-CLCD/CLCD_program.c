@@ -125,3 +125,30 @@ void CLCD_voidWriteSpecialCharacter(u8 * Copy_pu8SpecialCharacterArray, u8 Copy_
     CLCD_voidSendData(Copy_u8BlockNumber);
 }
 
+u8 private_u8GetnumberOfDigits(u32 Copy_u32Number){
+    u8 local_u8Counter = 0;
+    while (Copy_u32Number > 0){
+        Copy_u32Number /= 10;
+        local_u8Counter ++;
+    }
+    return local_u8Counter;
+}
+
+void private_voidNumberToDigits(u32 Copy_u32Number, char * array){
+    u8 local_u8Counter = 0;
+    while(Copy_u32Number > 0) {
+        array[local_u8Counter] = 48 + (Copy_u32Number% 10);
+        Copy_u32Number /= 10;
+        local_u8Counter ++;
+    }
+}
+
+void CLCD_voidWriteNumber(u32 Copy_u32Number){
+    u8 numberOfDigits = private_u8GetnumberOfDigits(Copy_u32Number);
+    char numberArray[numberOfDigits];
+    private_voidNumberToDigits(Copy_u32Number, numberArray);
+
+    for (u8 local_loopCounter = numberOfDigits; local_loopCounter > 0; local_loopCounter--){
+        CLCD_voidSendData(numberArray[local_loopCounter -1]);
+    }
+}
