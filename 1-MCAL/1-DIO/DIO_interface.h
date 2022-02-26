@@ -3,18 +3,12 @@
 /**********************    Author : Mohamed Aburehab    **********************/
 /**********************    Layer  : MCAL                **********************/
 /**********************    SWD    : DIO                 **********************/
-/**********************    Version: 1.0                 **********************/
+/**********************    Version: 2.0                 **********************/
 /*****************************************************************************/
 /*****************************************************************************/
 
 #ifndef DIO_INTERFACE_H_
 #define DIO_INTERFACE_H_
-
-// directions
-#define DIO_u8PIN_OUTPUT        1
-#define DIO_u8PIN_INPUT         0
-#define DIO_u8PORT_OUTPUT       0xFF
-#define DIO_u8PORT_INPUT        0x00
 
 // values
 #define DIO_u8PIN_HIGH          1
@@ -37,10 +31,6 @@
 #define DIO_u8PIN5              5
 #define DIO_u8PIN6              6
 #define DIO_u8PIN7              7
-
-u8 DIO_u8SetPinDirection(u8 Copy_u8Port, u8 Copy_u8PinNumber, u8 Copy_u8Direction);
-
-u8 DIO_u8SetPortDirection(u8 Copy_u8Port, u8 Copy_u8Direction);
 
 u8 DIO_u8SetPinValue(u8 Copy_u8Port, u8 Copy_u8PinNumber, u8 Copy_u8Value);
 
