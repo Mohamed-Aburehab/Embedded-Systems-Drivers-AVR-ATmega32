@@ -24,4 +24,6 @@ void CLCD_voidWriteSpecialCharacter(u8 * Copy_pu8SpecialCharacterArray, u8 Copy_
                                     u8 Copy_u8XPosition, u8 Copy_u8YPosition);
 
 void CLCD_voidWriteNumber(u32 Copy_u32Number);
+
+#define CLCD_CLR_DISPLAY CLCD_voidSendCommand(1)
 #endif
