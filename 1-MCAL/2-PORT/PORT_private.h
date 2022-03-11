@@ -19,11 +19,6 @@
 #define HIGH                1
 
 
-// Error state
-#define NO_ERROR 0
-#define ERROR_WRONG_FUNCTION_ARGUMENTS 1
-#define ERROR_NULL_POINTER 2
-
 #define CONC(b7,b6,b5,b4,b3,b2,b1,b0)               CONC_HELPER(b7,b6,b5,b4,b3,b2,b1,b0)
 #define CONC_HELPER(b7,b6,b5,b4,b3,b2,b1,b0)        0b##b7##b6##b5##b4##b3##b2##b1##b0
 

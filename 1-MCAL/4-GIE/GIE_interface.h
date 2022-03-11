@@ -10,7 +10,18 @@
 #ifndef GIE_INTERFACE_H_
 #define GIE_INTERFACE_H_
 
+/**
+  * @brief  : Enable General interrupts 
+  * @param  : void
+  * @return : void
+*/
 void GIE_voidEnable (void);
+
+/**
+  * @brief  : Disable General interrupts 
+  * @param  : void
+  * @return : void
+*/
 void GIE_voidDisable(void);
 
 #endif

@@ -24,8 +24,8 @@ typedef double f64;
 #define NULL 0
 
 // Error states
-#define NO_ERROR 0
-#define ERROR_WRONG_FUNCTION_ARGUMENTS 1
-#define ERROR_NULL_POINTER 2
+#define NO_ERROR 1
+#define ERROR_WRONG_FUNCTION_ARGUMENTS 2
+#define ERROR_NULL_POINTER 3
 
 #endif

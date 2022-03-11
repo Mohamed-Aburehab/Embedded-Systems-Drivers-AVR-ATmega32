@@ -11,10 +11,9 @@
 #ifndef EXTI_PRIVATE_H_
 #define EXTI_PRIVATE_H_
 
-// Error state
-#define NO_ERROR 0
-#define ERROR_WRONG_FUNCTION_ARGUMENTS 1
-#define ERROR_NULL_POINTER 2
+// interrupt perifral control
+#define ENABLED 1
+#define DISABLED 2
 
 #endif
 

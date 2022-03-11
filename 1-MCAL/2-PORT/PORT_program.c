@@ -14,6 +14,11 @@
 #include "PORT_interface.h"
 #include "PORT_register.h"
 
+/**
+  * @brief  : intialize all ports directions and intial values 
+  * @param  : void
+  * @return : void
+*/
 void PORT_voidInit(void){
     DDRA = PORTA_DIR;
     DDRB = PORTB_DIR;

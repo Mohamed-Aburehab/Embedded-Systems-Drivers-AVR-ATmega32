@@ -10,19 +10,47 @@
 #ifndef EXTI_CONFIG_H_
 #define EXTI_CONFIG_H_
 
-// sense control states
-#define LOW_LEVEL 0
-#define LOGICAL_CHANGE 1
-#define FALLING_EDGE 2
-#define RISING_EDGE 3
-
-// for INT0 choose from (LOW_LEVEL, LOGICAL_CHANGE, FALLING_EDGE, RISING_EDGE)
+/*
+For INT0:
+        SENSE CONTROL options :
+                                1 - LOW_LEVEL
+                                2 - LOGICAL_CHANGE
+                                3 - FALLING_EDGE
+                                4 - RISING_EDGE
+        INITIAL STATE options :
+                                1 - ENABLED
+                                2 - DISABLED
+*/
 #define EXTI_INT0_SENSE_CONTROL        FALLING_EDGE
+#define EXTI_INT0_INITIAL_STATE        ENABLED
+/********************************************************/
 
-// for INT1 choose from (LOW_LEVEL, LOGICAL_CHANGE, FALLING_EDGE, RISING_EDGE)
+
+/*
+For INT1:
+        SENSE CONTROL options :
+                                1 - LOW_LEVEL
+                                2 - LOGICAL_CHANGE
+                                3 - FALLING_EDGE
+                                4 - RISING_EDGE
+        INITIAL STATE options :
+                                1 - ENABLED
+                                2 - DISABLED
+*/
 #define EXTI_INT1_SENSE_CONTROL        FALLING_EDGE
+#define EXTI_INT1_INITIAL_STATE        ENABLED
+/********************************************************/
 
-// for INT2 choose from (FALLING_EDGE, RISING_EDGE)
+/*
+For INT2:
+        SENSE CONTROL options :
+                                3 - FALLING_EDGE
+                                4 - RISING_EDGE
+        INITIAL STATE options :
+                                1 - ENABLED
+                                2 - DISABLED
+*/
 #define EXTI_INT2_SENSE_CONTROL        FALLING_EDGE
+#define EXTI_INT2_INITIAL_STATE        ENABLED
 
 #endif

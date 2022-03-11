@@ -10,6 +10,11 @@
 #ifndef PORT_INTERFACE_H_
 #define PORT_INTERFACE_H_
 
+/**
+  * @brief  : intialize all ports directions and intial values 
+  * @param  : void
+  * @return : void
+*/
 void PORT_voidInit(void);
 
 #endif

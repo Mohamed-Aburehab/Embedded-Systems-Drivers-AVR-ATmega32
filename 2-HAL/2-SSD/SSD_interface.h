@@ -10,11 +10,6 @@
 #ifndef SSD_INTERFACE_H_
 #define SSD_INTERFACE_H_
 
-// error state
-#define NO_ERROR                        0
-#define ERROR_WRONG_FUNCTION_ARGUMENTS  1
-#define ERROR_NULL_POINTER              2
-
 // common types
 #define SSD_COMMON_CATHODE                  0
 #define SSD_COMMON_ANODE                    1
