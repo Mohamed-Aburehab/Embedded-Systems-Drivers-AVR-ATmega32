@@ -20,4 +20,7 @@
 #define IDLE 1
 #define BUSY 2
 
+#define SINGLE_CHANNEL_ASYNC        1
+#define CHAIN_CONVERSION            2
+
 #endif

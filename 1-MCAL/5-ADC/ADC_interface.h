@@ -10,6 +10,17 @@
 #ifndef ADC_INTERFACE_H_
 #define ADC_INTERFACE_H_
 
+
+typedef struct
+{
+  u8* Channel;
+  u16* Result;
+  u8 Size;
+  void (*NotificationFunc)(void);
+
+}Chain_t;
+
+
 /* Channels names */
 #define ADC_SINGLE_ENDED_ADC0                               0
 #define ADC_SINGLE_ENDED_ADC1                               1
@@ -59,7 +70,7 @@
 void ADC_voidInit(void);
 
 /**
-  * @brief   Get ADC channel Reading synchronous
+  * @brief  :Get ADC channel Reading synchronous
   * @param  :channel number
   * @param  :pointer to a u16 to store the adc value in it
   * @return :error state
@@ -67,7 +78,7 @@ void ADC_voidInit(void);
 u8 ADC_u8GetChannelReadingSynch(u8 Copy_u8ChannelNumber, u16 *Copy_pu16DigitalValue);
 
 /**
-  * @brief   Get ADC channel Reading Asynchronous
+  * @brief  :Get ADC channel Reading Asynchronous
   * @param  :channel number
   * @param  :pointer to a u16 to store the adc value in it
   * @param  :pointer to the notification function
@@ -76,5 +87,12 @@ u8 ADC_u8GetChannelReadingSynch(u8 Copy_u8ChannelNumber, u16 *Copy_pu16DigitalVa
 */
 u8 ADC_u8GetChannelReadingAsynch(u8 Copy_u8ChannelNumber, u16 *Copy_pu16DigitalValue, void(*Copy_PvNotificationFunc)(void));
 
+/**
+  * @brief  :do a chain conversion
+  * @param  :pointer to chain type
+  * @return :error state
+  * ! using this function will require you to enable the global interrupt
+*/
+u8 ADC_u8StartChainAsynch(Chain_t * Copy_Chain);
 
 #endif
