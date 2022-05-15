@@ -9,4 +9,28 @@
 
 #ifndef TIMER_PRIVATE_H_
 #define TIMER_PRIVATE_H_
+
+#define TIMER_CLOCK_MASK                        0b11111000
+
+/*********************/
+//? TIMER0 Private 
+/*********************/
+#define TIMER0_MODE_MASK                        0b10110111
+#define TIMER0_OC0_MASK                         0b11001111
+
+
+/*********************/
+//? TIMER1 Private 
+/*********************/
+#define TIMER1_MODE_MASK                        0b1110011111111100
+#define TIMER1_OC1A_MASK                        0b00111111
+#define TIMER1_OC1B_MASK                        0b11001111
+
+
+/*********************/
+//? TIMER2 Private 
+/*********************/
+#define TIMER2_MODE_MASK                        0b10110111
+#define TIMER2_OC2_MASK                         0b11001111
+
 #endif
