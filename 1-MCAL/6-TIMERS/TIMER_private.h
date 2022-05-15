@@ -22,7 +22,6 @@
 /*********************/
 //? TIMER1 Private 
 /*********************/
-#define TIMER1_MODE_MASK                        0b1110011111111100
 #define TIMER1_OC1A_MASK                        0b00111111
 #define TIMER1_OC1B_MASK                        0b11001111
 

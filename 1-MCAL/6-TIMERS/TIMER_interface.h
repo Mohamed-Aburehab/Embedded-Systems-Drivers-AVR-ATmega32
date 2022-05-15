@@ -72,25 +72,25 @@ u8 TIMER0_u8SetCallBackFuncOnOverFlow(void (*Copy_pvCallBackFunkOverFlow)(void))
 //? TIMER1 Interface 
 /*********************/
 // TIMER1 MODES: 
-#define TIMER1_MODE_NORMAL                                      0b0000000000000000
-#define TIMER1_MODE_PHASE_CORRECT_PWM_8BIT                      0b0000000000000001
-#define TIMER1_MODE_PHASE_CORRECT_PWM_9BIT                      0b0000000000000010
-#define TIMER1_MODE_PHASE_CORRECT_PWM_10BIT                     0b0000000000000011
+#define TIMER1_MODE_NORMAL                                      0x00
+#define TIMER1_MODE_PHASE_CORRECT_PWM_8BIT                      0x01
+#define TIMER1_MODE_PHASE_CORRECT_PWM_9BIT                      0x02
+#define TIMER1_MODE_PHASE_CORRECT_PWM_10BIT                     0x03
 
-#define TIMER1_MODE_CTC                                         0b0000100000000000
-#define TIMER1_MODE_FAST_PWM_8BIT                               0b0000100000000001
-#define TIMER1_MODE_FAST_PWM_9BIT                               0b0000100000000010
-#define TIMER1_MODE_FAST_PWM_10BIT                              0b0000100000000011
+#define TIMER1_MODE_CTC                                         0x04
+#define TIMER1_MODE_FAST_PWM_8BIT                               0x05
+#define TIMER1_MODE_FAST_PWM_9BIT                               0x06
+#define TIMER1_MODE_FAST_PWM_10BIT                              0x07
 
-#define TIMER1_MODE_PHASE_FREQUENCY_CORRECT_PWM_ICR1            0b0001000000000000
-#define TIMER1_MODE_PHASE_FREQUENCY_CORRECT_PWM_OCR1A           0b0001000000000001
-#define TIMER1_MODE_PHASE_CORRECT_PWM_ICR1                      0b0001000000000010
-#define TIMER1_MODE_PHASE_CORRECT_PWM_OCR1A                     0b0001000000000011
+#define TIMER1_MODE_PHASE_FREQUENCY_CORRECT_PWM_ICR1            0x08
+#define TIMER1_MODE_PHASE_FREQUENCY_CORRECT_PWM_OCR1A           0x09
+#define TIMER1_MODE_PHASE_CORRECT_PWM_ICR1                      0x0A
+#define TIMER1_MODE_PHASE_CORRECT_PWM_OCR1A                     0x0B
 
-#define TIMER1_MODE_CTC_ICR1                                    0b0001100000000000
+#define TIMER1_MODE_CTC_ICR1                                    0x0C
 
-#define TIMER1_MODE_FAST_PWM_ICR1                               0b0001100000000010
-#define TIMER1_MODE_FAST_PWM_OCR1A                              0b0001100000000011
+#define TIMER1_MODE_FAST_PWM_ICR1                               0x0E
+#define TIMER1_MODE_FAST_PWM_OCR1A                              0x0F
 
 // TIMER1 CLOCKS:
 #define T1_NO_CLOCK_SOURCE                      0b00000000

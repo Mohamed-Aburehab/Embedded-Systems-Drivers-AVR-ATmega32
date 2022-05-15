@@ -122,8 +122,14 @@ u8 TIMER1_voidInit(TIMER1_CONFIG *Copy_Timer1Config){
     /* Checking if the pointer is pointing to a valid address or not. */
     if (Copy_Timer1Config != NULL){
         // setting timer mode
-        TCCR1 &= TIMER1_MODE_MASK;
-        TCCR1 |= Copy_Timer1Config->MODE;
+    	  u8 Local_u8First2BitsInMode = Copy_Timer1Config->MODE << 6;
+    	  u8 Local_u8Second2BitsInMode = Copy_Timer1Config->MODE >> 2;
+    	  TCCR1A &= 0b11111100;
+		  TCCR1A |= (Local_u8First2BitsInMode >> 6);
+		  TCCR1B &= 0b11100111;
+		  TCCR1B |= (Local_u8Second2BitsInMode << 3);
+
+
         // setting interrupt for input capture 
         if (Copy_Timer1Config->INPUT_CAPTURE_INTERRUPT_ENABLE == ENABLE){SET_BIT(TIMSK,TIMSK_TICIE1);}
         else{CLR_BIT(TIMSK,TIMSK_TICIE1);}
