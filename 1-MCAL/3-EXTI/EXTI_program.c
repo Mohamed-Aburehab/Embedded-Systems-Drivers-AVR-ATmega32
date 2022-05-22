@@ -324,3 +324,16 @@ void __vector_3(void){
         EXTI_pvInt2Func();
     }
 }
+
+
+u8 EXTI_u8DisableInterrupt(u8 Copy_INTERRUPT_ID){
+    u8 Local_u8ErrorState = NO_ERROR;
+    if (Copy_INTERRUPT_ID == INT0 || Copy_INTERRUPT_ID == INT1 || Copy_INTERRUPT_ID == INT2){
+        CLR_BIT(GICR, Copy_INTERRUPT_ID);
+    }
+    else {
+        Local_u8ErrorState = ERROR_WRONG_FUNCTION_ARGUMENTS;
+    }
+    
+    return Local_u8ErrorState;
+}

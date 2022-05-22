@@ -200,4 +200,6 @@ void    TIMER2_voidSetCompMatchValue(u8 Copy_u8Value);
 u8      TIMER2_u8SetCallBackFuncOnCTC(void (*Copy_pvCallBackFunkCTC)(void));
 u8      TIMER2_u8SetCallBackFuncOnOverFlow(void (*Copy_pvCallBackFunkOverFlow)(void));
 
+void TIMER0_delay_us(u16 Copy_u8DelayTime);
+void TIMER0_delay_ms(u16 Copy_u8DelayTime);
 #endif

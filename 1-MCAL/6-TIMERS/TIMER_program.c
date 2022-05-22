@@ -29,7 +29,7 @@ static void (*TIMER0_pvCallBackFuncOnOverFlow)(void) = NULL;
  * @return  the error state of the function.
  */
 u8 TIMER0_voidInit(TIMER0_CONFIG *Copy_Timer0Config){
-    u8 Local_u8ErrorState;
+    u8 Local_u8ErrorState = NO_ERROR;
     /* Checking if the pointer is pointing to a valid address or not. */
     if (Copy_Timer0Config != NULL){
         // setting timer mode
@@ -118,7 +118,7 @@ static void (*TIMER1_pvCallBackFuncOnOverFlow)(void) = NULL;
 static void (*TIMER1_pvCallBackFuncOnInputCapture)(void) = NULL;
 
 u8 TIMER1_voidInit(TIMER1_CONFIG *Copy_Timer1Config){   
-    u8 Local_u8ErrorState;
+    u8 Local_u8ErrorState = NO_ERROR;
     /* Checking if the pointer is pointing to a valid address or not. */
     if (Copy_Timer1Config != NULL){
         // setting timer mode
@@ -259,7 +259,7 @@ static void (*TIMER2_pvCallBackFuncOnCTC)(void) = NULL;
 static void (*TIMER2_pvCallBackFuncOnOverFlow)(void) = NULL;
 
 u8 TIMER2_voidInit(TIMER2_CONFIG *Copy_Timer2Config){
-    u8 Local_u8ErrorState;
+    u8 Local_u8ErrorState = NO_ERROR;
     /* Checking if the pointer is pointing to a valid address or not. */
     if (Copy_Timer2Config != NULL){
         // setting timer mode
@@ -339,4 +339,41 @@ void __vector_5 (void){
     if(TIMER2_pvCallBackFuncOnOverFlow != NULL){
         TIMER2_pvCallBackFuncOnOverFlow();
     }
+}
+void TIMER0_delay_us(u16 Copy_u8DelayTime){
+	TIMER0_CONFIG CONFIG_STRUCT= {TIMER0_MODE_NORMAL, T0_PRESCALING_BY_8, OC0_NORMAL_OPERATION, DISABLE, DISABLE};
+	TIMER0_voidInit(&CONFIG_STRUCT);
+	TCNT0 = 0;
+    OCR0 = 250;
+	u16 Local_u8NumberOfReps = Copy_u8DelayTime/ 250;
+    u16 Local_u8NumberOfOV = 0;
+    while (Local_u8NumberOfOV < Local_u8NumberOfReps){
+        if (GET_BIT(TIFR, TIMSK_OCF0) == 1){
+            SET_BIT(TIFR, TIMSK_OCF0);
+            TCNT0 = 0;
+            Local_u8NumberOfOV ++;
+        }
+    }
+	while (TCNT0 < (Copy_u8DelayTime - (Local_u8NumberOfReps * 250)) ){
+	}
+	CONFIG_STRUCT.CLOCK = T0_NO_CLOCK_SOURCE;
+	TIMER0_voidInit(&CONFIG_STRUCT);
+}
+void TIMER0_delay_ms(u16 Copy_u8DelayTime){
+	TIMER0_CONFIG CONFIG_STRUCT= {TIMER0_MODE_NORMAL, T0_PRESCALING_BY_256, OC0_NORMAL_OPERATION, DISABLE, DISABLE};
+	TIMER0_voidInit(&CONFIG_STRUCT);
+	TCNT0 = 0;
+    OCR0 = 31;
+	u16 Local_u8NumberOfReps = Copy_u8DelayTime ;
+    u16 Local_u8NumberOfOV = 0;
+    while (Local_u8NumberOfOV < Local_u8NumberOfReps){
+        if (GET_BIT(TIFR, TIMSK_OCF0) == 1){
+            SET_BIT(TIFR, TIMSK_OCF0);
+            TCNT0 = 0;
+            Local_u8NumberOfOV ++;
+        }
+    }
+
+	CONFIG_STRUCT.CLOCK = T0_NO_CLOCK_SOURCE;
+	TIMER0_voidInit(&CONFIG_STRUCT);
 }

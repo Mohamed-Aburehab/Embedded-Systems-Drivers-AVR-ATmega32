@@ -11,10 +11,15 @@
 #define EXTI_INTERFACE_H_
 
 // sense control states
-#define LOW_LEVEL 1
-#define LOGICAL_CHANGE 2
-#define FALLING_EDGE 3
-#define RISING_EDGE 4
+#define LOW_LEVEL           1
+#define LOGICAL_CHANGE      2
+#define FALLING_EDGE        3
+#define RISING_EDGE         4
+
+//Interrupts IDS 
+#define INT0                6
+#define INT1                7
+#define INT2                5
 
 /**
   * @brief  : PreBuild initialize for INT0 
@@ -111,4 +116,6 @@ u8 EXTI_u8Int1SetCallBack(void (*Copy_pvInt1Func)(void));
 */
 u8 EXTI_u8Int2SetCallBack(void (*Copy_pvInt2Func)(void));
 
+
+u8 EXTI_u8DisableInterrupt(u8 Copy_INTERRUPT_ID);
 #endif

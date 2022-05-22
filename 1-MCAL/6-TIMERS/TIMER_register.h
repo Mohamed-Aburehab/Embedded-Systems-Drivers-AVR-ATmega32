@@ -18,17 +18,35 @@ Timer mask
 ******************************************/
 #define TIMSK                       *((volatile u8*)0x59)
 // Timer 0
-#define TIMSK_OCIE0                 1                  // Timer0 output compare match interrupt enable
 #define TIMSK_TOIE0                 0                  // Timer0 Overflow Interrupt Enable
+#define TIMSK_OCIE0                 1                  // Timer0 output compare match interrupt enable
 // Timer 1
-#define TIMSK_TICIE1                1                  // Timer1 input capture interrupt enable
-#define TIMSK_OCIE1A                1                  // Timer1 output compare A match interrupt enable
-#define TIMSK_OCIE1B                1                  // Timer1 output compare B match interrupt enable
-#define TIMSK_TOIE1                 1                  // Timer1 overflow interrupt enable
+#define TIMSK_TOIE1                 2                  // Timer1 overflow interrupt enable
+#define TIMSK_OCIE1B                3                  // Timer1 output compare B match interrupt enable
+#define TIMSK_OCIE1A                4                  // Timer1 output compare A match interrupt enable
+#define TIMSK_TICIE1                5                  // Timer1 input capture interrupt enable
 // Timer 2
-#define TIMSK_OCIE2                 7                  // Timer2 output compare match interrupt enable
 #define TIMSK_TOIE2                 6                  // Timer2 Overflow Interrupt Enable
+#define TIMSK_OCIE2                 7                  // Timer2 output compare match interrupt enable
 
+/******************************************
+Timer/Counter Interrupt Flag Register 
+-------------------------------------------
+|OCF2|TOV2|ICF1|OCF1A|OCF1B|TOV1|OCF0|TOV0|
+-------------------------------------------
+******************************************/
+#define TIFR                       *((volatile u8*)0x58)
+// Timer 0
+#define TIMSK_TOV0                  0                  // Timer0 Overflow Flag
+#define TIMSK_OCF0                  1                  // Timer0 Output Compare Flag
+// Timer 1
+#define TIMSK_TOV1                  2                  // Timer1 Overflow Flag
+#define TIMSK_OCF1B                 3                  // Timer1 Output Compare B Match Flag
+#define TIMSK_OCF1A                 4                  // Timer1 Output Compare A Match Flag
+#define TIMSK_ICF1                  5                  // Timer1 Input Capture Flag
+// Timer 2
+#define TIMSK_TOV2                  6                  // Timer2 output Overflow Flag
+#define TIMSK_OCF2                  7                  // Timer2 Output Compare Flag
 
 /*********************/
 //? TIMER0 Registers 
