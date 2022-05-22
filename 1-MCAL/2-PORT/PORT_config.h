@@ -68,7 +68,7 @@
                     /******* ******* *******/
 /*****************************************************************/
 // choose LOW for floating if input
-// choode LOW for pulledup if input
+// choose HIGH for pulledup if input
 
 
 // PORT A Pins initial values configuration
