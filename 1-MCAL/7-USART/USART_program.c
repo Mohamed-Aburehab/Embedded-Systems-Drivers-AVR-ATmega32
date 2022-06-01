@@ -215,7 +215,7 @@ u8 USART_u8SendStringSynch(char * Copy_pcString){
 
     if (Copy_pcString != NULL){
         while(Copy_pcString[Local_u8StringCounter] != '\0'){
-            Local_u8ErrorState = USART_voidSendCharSynch(Copy_pcString[Local_u8StringCounter]);
+            Local_u8ErrorState = USART_u8SendCharSynch(Copy_pcString[Local_u8StringCounter]);
             Local_u8StringCounter ++;
             if (Local_u8ErrorState != NO_ERROR){
                 break;
@@ -339,7 +339,7 @@ u8 USART_u8ReceiveCharAsynch(u8 * Copy_pu8ReceivedChar ,void(*Copy_PvNotificatio
         if (Copy_PvNotificationFunc != NULL && Copy_pu8ReceivedChar != NULL){
             USART_u8BusyState = USART_BUSY_STATE_BUSY;
             USART_u8ISRsource = USART_ISR_RECEIVE_CHAR_ASYNCH;
-            USART_pvCallBackNotificationFuncReceiveChar = Copy_PvNotificationFunc();
+            USART_pvCallBackNotificationFuncReceiveChar = Copy_PvNotificationFunc;
             Global_pcReceivedChar = Copy_pu8ReceivedChar;
             /* Enable RX Complete Interrupt */
             SET_BIT(UCSRB, UCSRB_RXCIE);
