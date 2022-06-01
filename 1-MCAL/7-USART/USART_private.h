@@ -3,7 +3,7 @@
 /**********************    Author : Mohamed Aburehab                        **********************/
 /**********************    Layer  : MCAL                                    **********************/
 /**********************    SWD    : USART (Universal serial communication)  **********************/
-/**********************    Version: 1.0                                     **********************/
+/**********************    Version: 2.0                                     **********************/
 /*************************************************************************************************/
 /*************************************************************************************************/
 
@@ -29,4 +29,15 @@
 
 #define  USART_1_STOP_BIT       1
 #define  USART_2_STOP_BIT       2
+
+/* USART busy state macros */
+#define USART_BUSY_STATE_IDLE   1
+#define USART_BUSY_STATE_BUSY   2
+
+/* USART ISR source macros */
+#define USART_ISR_SEND_CHAR_ASYNCH      1
+#define USART_ISR_SEND_STRING_ASYNCH    2
+#define USART_ISR_RECEIVE_CHAR_ASYNCH   3
+#define ISART_ISR_RECEIVE_BUFFER_ASYNCH 4
+
 #endif
