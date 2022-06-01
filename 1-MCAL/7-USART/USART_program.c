@@ -15,53 +15,47 @@
 #include "USART_interface.h"
 #include "USART_private.h"
 
+#if USART_2X_MODE == USART_DISABLE
+#define UBRR_VAL (FOSC/16/USART_BAUD_RATE-1)
+#elif USART_2X_MODE == USART_ENABLE
+#define UBRR_VAL (FOSC/8/USART_BAUD_RATE-1)
+#endif
+
 
 /**
  * @brief initializes the USART module.
  */
 void USART_voidInit(void){
 
-    u16 Local_u16UBRRR_value ;
-
     CLR_BIT(UCSRA, UCSRA_MPCM);
     CLR_BIT(UCSRA, UCSRA_U2X);
-
+    /*setting the 2x mode option*/
+	#if USART_2X_MODE == USART_DISABLE
+	CLR_BIT(UCSRA, UCSRA_U2X);
+	#elif USART_2X_MODE == USART_ENABLE
+	SET_BIT(UCSRA, UCSRA_U2X);
+	#endif
 
     /* Setting the baud rate. */
-    #if USART_BAUD_RATE == 9600
-	UBRRL = 51;
-    #elif USART_BAUD_RATE == 2400
-	UBRRL = 207;
-    #elif USART_BAUD_RATE == 4800
-	UBRRL = 103;
-    #elif USART_BAUD_RATE == 14400
-	UBRRL = 34;
-    #elif USART_BAUD_RATE == 19200
-	UBRRL = 25;
-    #elif USART_BAUD_RATE == 28800
-	UBRRL = 16;
-    #elif USART_BAUD_RATE == 38400
-	UBRRL = 12;
-    #elif USART_BAUD_RATE == 57600
-	UBRRL = 8;
-    #elif USART_BAUD_RATE == 76800
-	UBRRL = 6;
-    #elif USART_BAUD_RATE == 115200
-	UBRRL = 3;
-    #endif
-	
+
+	u8 UBRRL_val = 0, UBRRH_val = 0;
+	UBRRL_val = (UBRR_VAL & 0b00011111111) ;
+	UBRRH_val = UBRR_VAL >> 8;
+	UBRRL = UBRRL_val;
+	UBRRH = UBRRH_val;
+
     u8 UCSRC_value;
     SET_BIT(UCSRC_value, UCSRC_URSEL);
     /* Setting the data size of the USART. */
     #if USART_DATA_SIZE == USART_DATA_8BIT
-	SET_BIT(UCSRC_value, UCSRC_UCSZ0);
-	SET_BIT(UCSRC_value, UCSRC_UCSZ1);
-	CLR_BIT(UCSRB, UCSRB_UCSZ2);
+		SET_BIT(UCSRC_value, UCSRC_UCSZ0);
+		SET_BIT(UCSRC_value, UCSRC_UCSZ1);
+		CLR_BIT(UCSRB, UCSRB_UCSZ2);
     #elif USART_DATA_SIZE == USART_DATA_5BIT
         UCSRC = (1 << UCSRC_URSEL) | (0 << UCSRC_UCSZ1) | (0 << UCSRC_UCSZ0);
         CLR_BIT(UCSRC_value, UCSRC_UCSZ0);
         CLR_BIT(UCSRC_value, UCSRC_UCSZ1);
-	CLR_BIT(UCSRB, UCSRB_UCSZ2);
+		CLR_BIT(UCSRB, UCSRB_UCSZ2);
     #elif USART_DATA_SIZE == USART_DATA_6BIT
         SET_BIT(UCSRC_value, UCSRC_UCSZ0);
         CLR_BIT(UCSRC_value, UCSRC_UCSZ1);
@@ -85,11 +79,11 @@ void USART_voidInit(void){
 
     /* Setting the parity mode. */
     #if USART_PARITY_MODE == USART_PARITY_DISABLED
-	CLR_BIT(UCSRC_value, UCSRC_UPM0);
-	CLR_BIT(UCSRC_value, UCSRC_UPM1);
+		CLR_BIT(UCSRC_value, UCSRC_UPM0);
+		CLR_BIT(UCSRC_value, UCSRC_UPM1);
     #elif USART_PARITY_MODE == USART_PARITY_ENABLED_EVEN
-	CLR_BIT(UCSRC_value, UCSRC_UPM0);
-	SET_BIT(UCSRC_value, UCSRC_UPM1);
+		CLR_BIT(UCSRC_value, UCSRC_UPM0);
+		SET_BIT(UCSRC_value, UCSRC_UPM1);
     #elif USART_PARITY_MODE == USART_PARITY_ENABLED_ODD
     	SET_BIT(UCSRC_value, UCSRC_UPM0);
     	SET_BIT(UCSRC_value, UCSRC_UPM1);
@@ -111,9 +105,9 @@ void USART_voidInit(void){
 
     /* Checking if the TX mode is enabled or disabled. */
     #if USART_TX_MODE == USART_ENABLE
-    	SET_BIT(UCSRB, UCSRB_TXEN);
+    SET_BIT(UCSRB, UCSRB_TXEN);
     #elif USART_TX_MODE == USART_DISABLE
-    	CLR_BIT(UCSRB, UCSRB_TXEN);
+    CLR_BIT(UCSRB, UCSRB_TXEN);
     #endif
 
 }

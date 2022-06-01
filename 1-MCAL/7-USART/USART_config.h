@@ -20,6 +20,9 @@
 // choose TX mode (USART_ENABLE , USART_DISABLE)
 #define USART_TX_MODE   USART_ENABLE
 
+// enable next option to double the baud rate speed
+#define USART_2X_MODE		USART_DISABLE
+
 /* choose data size between :       1- USART_DATA_8BIT
                                     2- USART_DATA_5BIT
                                     3- USART_DATA_6BIT
