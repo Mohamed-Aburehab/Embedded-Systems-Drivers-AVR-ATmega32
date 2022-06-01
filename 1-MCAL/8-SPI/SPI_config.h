@@ -21,5 +21,15 @@ options:    1- SPI_CLOCK_PRESCALER_DIV_BY_4    -> To Divide Fosc by 4
 */
 #define SPI_CLOCK_PRESCALER_VALUE       SPI_CLOCK_PRESCALER_DIV_BY_16
 
+/*Select SPI Clock Polarity 
+options:    1- SPI_CLOCK_POLARITY_IDLE_LOW      -> Clock is LOW when idle  (Leading Edge = Rising )
+            2- SPI_CLOCK_POLARITY_IDLE_HIGH     -> Clock is HIGH when idle (Leading Edge = Falling)
+*/
+#define SPI_CLOCK_POLARITY              SPI_CLOCK_POLARITY_IDLE_LOW
 
+/*Select SPI Clock Phase 
+options:    1- SPI_CLOCK_PHASE_SAMPLE_SETUP     -> receive on leading edge then send
+            2- SPI_CLOCK_PHASE_SETUP_SAMPLE     -> send on leading edge then receive 
+*/
+#define SPI_CLOCK_PHASE                 SPI_CLOCK_PHASE_SAMPLE_SETUP
 #endif

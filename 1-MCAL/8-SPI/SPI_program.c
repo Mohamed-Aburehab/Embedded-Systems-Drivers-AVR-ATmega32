@@ -15,6 +15,9 @@
 #include "SPI_private.h"
 #include "SPI_interface.h"
 
+/**
+* @brief Initializing the SPI  as a master. 
+**/
 void SPI_voidInitMaste(void){
     /* Master initialization */
     SET_BIT(SPCR, SPCR_MSTR);
@@ -54,11 +57,26 @@ void SPI_voidInitMaste(void){
         SET_BIT(SPSR, SPSR_SPI2X);
     #endif
 
+    /*Clock Polarity Setting*/
+    #if SPI_CLOCK_POLARITY == SPI_CLOCK_POLARITY_IDLE_LOW
+    CLR_BIT(SPCR, SPCR_CPOL);
+    #elif SPI_CLOCK_POLARITY == SPI_CLOCK_POLARITY_IDLE_HIGH
+    SET_BIT(SPCR, SPCR_CPOL);
+    #endif
 
+    /*Clock Phase Setting*/
+    #if SPI_CLOCK_PHASE == SPI_CLOCK_PHASE_SAMPLE_SETUP
+    CLR_BIT(SPCR, SPCR_CPHA);
+    #elif SPI_CLOCK_PHASE == SPI_CLOCK_PHASE_SETUP_SAMPLE
+    SET_BIT(SPCR, SPCR_CPHA);
+    #endif
     /* Enable SPI */
     SET_BIT(SPCR, SPCR_SPE);
 }
 
+/**
+ * @brief It initializes the SPI in slave mode.
+ */
 void SPI_voidInitSlave(void){
     /* Slave initialization */
     CLR_BIT(SPCR, SPCR_MSTR);
@@ -67,8 +85,15 @@ void SPI_voidInitSlave(void){
     SET_BIT(SPCR, SPCR_SPE);
 }
 
-u8 SPI_u8Transceive(u8 Copy_u8Data){
 
+/**
+ * @brief It sends a byte and waits for the SPI to finish sending it, then it returns the received byte
+ * 
+ * @param Copy_u8Data The data to be sent.
+ * 
+ * @return The received data.
+ */
+u8 SPI_u8Transceive(u8 Copy_u8Data){
     /* Send Data */
     SPDR = Copy_u8Data;
     /* Wait (busy waiting) until transceive complete */
