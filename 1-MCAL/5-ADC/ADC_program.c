@@ -99,7 +99,7 @@ u8 ADC_u8GetChannelReadingSynch(u8 Copy_u8ChannelNumber, u16 *Copy_pu16DigitalVa
             /*Start Conversion*/
             SET_BIT(ADCSRA, ADCSRA_ADSC);
 
-            // pooling (busy waiting) until the conversion complete flag is set or counter timeout
+            // polling (busy waiting) until the conversion complete flag is set or counter timeout
             while(((GET_BIT(ADCSRA, ADCSRA_ADIF)) == 0) && (Local_u32Counter != ADC_TIMEOUT)){
                 Local_u32Counter ++;
             }
