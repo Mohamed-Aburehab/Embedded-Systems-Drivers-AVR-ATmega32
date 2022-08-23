@@ -17,6 +17,7 @@ typedef struct{
     u8 TaskState;
     u16 Periodicity;
     void(*TaskFunc)(void); 
+    u16 FirstDelay;
 }Task_t;
 
 static void voidScheduler(void);
