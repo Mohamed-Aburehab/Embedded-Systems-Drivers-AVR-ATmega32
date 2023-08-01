@@ -10,7 +10,7 @@
 #ifndef CLCD_CONFIG_H_
 #define CLCD_CONFIG_H_
 // choose between 4 and 8
-#define CLCD_MODE                   4
+#define CLCD_MODE                   8
 
 #define CLCD_DATA_PORT              DIO_u8PORTA
 // for 4 bit mode choose the data pins:

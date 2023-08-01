@@ -15,6 +15,9 @@
 #include "CLCD_private.h"
 #include "CLCD_config.h"
 
+u8 static CLCD_private_u8GetnumberOfDigits(u32 Copy_u32Number);
+void static CLCD_private_voidNumberToDigits(u32 Copy_u32Number, char * array);
+
 void CLCD_voidSendCommand(u8 Copy_u8Command){
     
     #if CLCD_MODE == 8
@@ -228,3 +231,22 @@ void CLCD_voidWriteNumber(u32 Copy_u32Number){
         CLCD_voidSendData(numberArray[local_loopCounter -1]);
     }
 }
+
+u8 static CLCD_private_u8GetnumberOfDigits(u32 Copy_u32Number){
+    u8 local_u8Counter = 0;
+    while (Copy_u32Number > 0){
+        Copy_u32Number /= 10;
+        local_u8Counter ++;
+    }
+    return local_u8Counter;
+}
+
+void static CLCD_private_voidNumberToDigits(u32 Copy_u32Number, char * array){
+    u8 local_u8Counter = 0;
+    while(Copy_u32Number > 0) {
+        array[local_u8Counter] = 48 + (Copy_u32Number% 10);
+        Copy_u32Number /= 10;
+        local_u8Counter ++;
+    }
+}
+
