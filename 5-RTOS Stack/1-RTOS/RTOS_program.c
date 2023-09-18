@@ -26,7 +26,7 @@ void RTOS_voidStart(void){
     GIE_voidEnable();
     TIMER0_voidInit(); 
 }
-
+/*
  * @param Copy_u8Priority The priority of the task.
  * @param Copy_u16Periodicity The time between each task execution.
  * @param Copy_pvTaskFunc is a pointer to the function that will be executed by the task.
